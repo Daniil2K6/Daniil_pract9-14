@@ -7,6 +7,26 @@
     --space-xl: 32px;
     --space-xxl: 40px;
     --space-xxxl: 48px;
+
+    /* Color tokens (light theme) */
+    --bg-page: linear-gradient(135deg, #ffb347 0%, #ffcc80 100%);
+    --surface: #ffffff;
+    --text-main: #2c3e50;
+    --muted: #7f8c8d;
+    --accent-1: #667eea;
+    --accent-2: #764ba2;
+    --accent-boost: #ffd6e0;
+}
+
+/* Dark theme override: add .is-dark to <html> or <body> */
+.is-dark {
+    --bg-page: linear-gradient(135deg,#0f1724 0%,#0b1220 100%);
+    --surface: #0b1220;
+    --text-main: #e6eef8;
+    --muted: #9aa6b2;
+    --accent-1: #4f46e5;
+    --accent-2: #8b5cf6;
+    --accent-boost: #334155;
 }
 
 /* ===== БАЗОВЫЕ СТИЛИ ===== */
@@ -14,14 +34,16 @@ body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     margin: 0;
     padding: 0;
-    background: linear-gradient(135deg, #ffb347 0%, #ffcc80 100%); /* Оранжевый градиент */
+    background: var(--bg-page);
+    color: var(--text-main);
     min-height: 100vh;
+    transition: background 240ms ease, color 240ms ease;
 }
 
 .page-container {
     max-width: 1200px;
     margin: 0 auto;
-    background: white;
+    background: var(--surface);
     min-height: 100vh;
     box-shadow: 0 0 30px rgba(0,0,0,0.1);
     padding: var(--space-xl);
@@ -36,7 +58,7 @@ body {
 }
 
 .header {
-    background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
+    background: linear-gradient(135deg, var(--accent-1) 0%, var(--accent-2) 100%);
     color: white;
     text-align: center;
     padding: var(--space-xxl);
@@ -80,15 +102,15 @@ body {
 
 .header__nav-link:hover,
 .header__nav-link:focus-visible {
-    background: rgba(255,255,255,0.15);
+    background: rgba(255,255,255,0.12);
     transform: translateY(-2px);
 }
 
 .header__nav-link--active {
-    background: #ffd6e0;
-    color: #764ba2;
+    background: var(--accent-boost);
+    color: var(--accent-2);
     font-weight: 700;
-    box-shadow: 0 2px 8px rgba(102,126,234,0.10);
+    box-shadow: 0 2px 8px rgba(0,0,0,0.06);
 }
 
 .nav {
@@ -137,7 +159,7 @@ body {
 
 .profile-title {
     font-size: 32px;
-    color: #2c3e50;
+    color: var(--text-main);
     margin-bottom: var(--space-xs);
     font-weight: 300;
 }
@@ -166,11 +188,11 @@ body {
 }
 
 .about-me {
-    background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+    background: linear-gradient(135deg, rgba(248,249,250,0.9) 0%, rgba(233,236,239,0.9) 100%);
     padding: var(--space-lg);
     border-radius: var(--space-sm);
     margin: var(--space-xl) 0;
-    border-left: 5px solid #667eea;
+    border-left: 5px solid var(--accent-1);
     font-size: 16px;
     line-height: 1.8;
 }
@@ -184,13 +206,13 @@ body {
 }
 
 .skill-tag {
-    background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+    background: linear-gradient(135deg, var(--accent-1) 0%, var(--accent-2) 100%);
     color: white;
     padding: var(--space-sm) var(--space-xl);
     border-radius: 25px;
     font-weight: 600;
     font-size: 14px;
-    box-shadow: 0 4px 15px rgba(79, 172, 254, 0.3);
+    box-shadow: 0 4px 15px rgba(79, 172, 254, 0.12);
     transition: all 0.3s ease;
 }
 
@@ -212,13 +234,13 @@ body {
 }
 
 .experience-card {
-    background: white;
+    background: var(--surface);
     padding: var(--space-lg);
     margin: var(--space-md) 0;
     border-radius: var(--space-sm);
-    box-shadow: 0 5px 20px rgba(0,0,0,0.08);
-    border-left: 4px solid #667eea;
-    transition: transform 0.3s ease;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.06);
+    border-left: 4px solid var(--accent-1);
+    transition: transform 0.3s ease, box-shadow 180ms ease;
 }
 
 .experience-card:hover {
@@ -239,7 +261,7 @@ body {
 }
 
 .footer {
-    background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
+    background: linear-gradient(135deg, var(--accent-1) 0%, var(--accent-2) 100%);
     color: white;
     text-align: center;
     padding: var(--space-xxl);
@@ -361,7 +383,7 @@ body {
 }
 
 .modal { display: none; align-items: center; justify-content: center; position: fixed; inset: 0; background: rgba(0,0,0,0.6); }
-.modal-inner { background: #fff; padding: var(--space-xl); border-radius: 12px; max-width: 420px; text-align: center; }
+.modal-inner { background: var(--surface); padding: var(--space-xl); border-radius: 12px; max-width: 420px; text-align: center; }
 
 @media (max-width: 900px) {
     .contact-grid { grid-template-columns: 1fr; }
@@ -387,7 +409,7 @@ dialog {
     overflow-y: auto;
 }
 .modal-header {
-    background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
+    background: linear-gradient(135deg, var(--accent-1) 0%, var(--accent-2) 100%);
     color: white;
     padding: 1.2rem 1.5rem;
     border-radius: 12px 12px 0 0;
@@ -399,12 +421,12 @@ dialog {
 .form-group input, .form-group select, .form-group textarea {
     width:100%; padding:0.65rem; border:2px solid #e9ecef; border-radius:6px; font-size:1rem; box-sizing:border-box; transition:border-color 0.2s ease;
 }
-.form-group input:focus, .form-group select:focus, .form-group textarea:focus { outline:none; border-color: #667eea; }
+.form-group input:focus, .form-group select:focus, .form-group textarea:focus { outline:none; border-color: var(--accent-1); box-shadow: 0 6px 18px rgba(102,126,234,0.08); }
 .form-group textarea { min-height:110px; resize:vertical; }
 .modal-actions { display:flex; gap:0.75rem; justify-content:flex-end; margin-top:1rem; }
 .btn { padding:0.65rem 1.2rem; border:none; border-radius:6px; cursor:pointer; font-weight:600; }
-.btn-primary { background: linear-gradient(135deg,#667eea 0%,#764ba2 100%); color:#fff; }
-.btn-secondary { background:#f8f9fa; color:#2c3e50; border:2px solid #e9ecef; }
+.btn--primary, .btn-primary { background: linear-gradient(135deg,var(--accent-1) 0%,var(--accent-2) 100%); color:#fff; }
+.btn--secondary, .btn-secondary { background:transparent; color:var(--text-main); border:2px solid rgba(0,0,0,0.06); }
 .required { color:#e74c3c; }
 
 @keyframes dialogFadeIn { from{opacity:0} to{opacity:1} }

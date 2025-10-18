@@ -26,12 +26,13 @@
 	<link rel="manifest" href="../assets/site.webmanifest">
     <link rel="stylesheet" href="../style/styles.css">
 	</head>
-	<body>
-        <body>
+    <body>
         <div class="page-container">
             <header class="header">
                 <img src="../assets/android-chrome-512x512.png" alt="Логотип Fox_Studio" class="logo">
                 <h1 class="site-title">Связаться с нами</h1>
+                <!-- Theme toggle (копия из index.html) -->
+                <button id="themeToggle" class="btn btn--secondary" aria-pressed="false" aria-label="Переключить тему">Тема</button>
             </header>
 
             <nav class="nav">
@@ -53,7 +54,7 @@
                     <section class="feedback-form">
                         <h2>Обратная связь</h2>
                         <p>Для подробного запроса откройте форму:</p>
-                        <button class="contact-button" id="openContact">Связаться с нами</button>
+                        <button class="btn btn--primary" id="openContact">Связаться с нами</button>
                     </section>
                 </div>
 
@@ -93,8 +94,8 @@
                                 <textarea id="fm-message" name="message" required placeholder="Опишите вашу проблему или вопрос..."></textarea>
                             </div>
                             <div class="modal-actions">
-                                <button type="button" class="btn btn-secondary" id="cancelBtn">Отмена</button>
-                                <button type="button" class="btn btn-primary" id="submitBtn">Отправить</button>
+                                <button type="button" class="btn btn--secondary" id="cancelBtn">Отмена</button>
+                                <button type="button" class="btn btn--primary" id="submitBtn">Отправить</button>
                             </div>
                         </div>
                     </form>
@@ -106,11 +107,43 @@
                     const cancelBtn = document.getElementById('cancelBtn');
                     const submitBtn = document.getElementById('submitBtn');
                     const feedbackForm = document.getElementById('feedbackForm');
+                    const themeToggle = document.getElementById('themeToggle');
+                    const mainContent = document.querySelector('main');
+                    let lastFocusedBeforeModal = null;
+
+                    // Theme utilities
+                    function applyTheme(isDark) {
+                        const target = document.documentElement || document.body;
+                        if (isDark) target.classList.add('is-dark'); else target.classList.remove('is-dark');
+                        if (themeToggle) themeToggle.setAttribute('aria-pressed', String(!!isDark));
+                    }
+                    function loadTheme() {
+                        const saved = localStorage.getItem('fox_theme');
+                        if (saved) applyTheme(saved === 'dark');
+                        else applyTheme(false);
+                    }
+                    function toggleTheme() {
+                        const isDark = document.documentElement.classList.contains('is-dark');
+                        applyTheme(!isDark);
+                        localStorage.setItem('fox_theme', !isDark ? 'dark' : 'light');
+                    }
+
+                    // Initialize theme on load
+                    loadTheme();
+                    if (themeToggle) {
+                        themeToggle.addEventListener('click', toggleTheme);
+                    }
 
                     // Open dialog
                     if (openBtn && contactModal) {
                         openBtn.addEventListener('click', () => {
+                            lastFocusedBeforeModal = document.activeElement;
                             contactModal.showModal();
+                            // Hide main content to assistive tech
+                            if (mainContent) mainContent.setAttribute('aria-hidden', 'true');
+                            // Focus first required input
+                            const first = contactModal.querySelector('[required]');
+                            if (first) first.focus();
                         });
                     }
 
@@ -149,6 +182,13 @@
                         contactModal.addEventListener('click', (e) => {
                             if (e.target === contactModal) contactModal.close();
                         });
+
+                        // When dialog closes, restore focus and aria-hidden
+                        contactModal.addEventListener('close', () => {
+                            if (mainContent) mainContent.removeAttribute('aria-hidden');
+                            if (lastFocusedBeforeModal && typeof lastFocusedBeforeModal.focus === 'function') lastFocusedBeforeModal.focus();
+                            lastFocusedBeforeModal = null;
+                        });
                     }
 
                     // Prevent Enter from submitting when not in textarea
@@ -160,16 +200,12 @@
                         });
                     }
                 </script>
-                    </section>
-                </div>
-            </main>
+                </main>
 
             <footer class="footer">
                 <p>&copy; 2025 Fox_Studio. Все права защищены.</p>
                 <p>Телефон: <a href="tel:+79991234567">+7 (999) 123-45-67</a></p>
             </footer>
         </div>
-        </body>
-        </html>
-	</body>
+    </body>
 </html>
