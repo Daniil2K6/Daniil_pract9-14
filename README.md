@@ -1,4 +1,4 @@
-# Fox_Studio. https://foxmanoriginal.github.io/Fox_project/
+# Fox_Studio. [https://foxmanoriginal.github.io/Fox_project/](https://daniil2k6.github.io/Daniil_pract9-14/)
 
 Fox_Studio — это современное приложение для работы с локальными нейросетями на вашем компьютере. Проект предоставляет удобный пользовательский интерфейс для запуска, настройки и использования различных моделей искусственного интеллекта без необходимости подключения к облачным сервисам.
 
