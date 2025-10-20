@@ -3,33 +3,48 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Проекты</title>
+    <title>Проекты — Портфолио</title>
     <link rel="icon" href="../assets/favicon.ico" type="image/x-icon">
-    <link rel="apple-touch-icon" sizes="180x180" href="../assets/apple-touch-icon.png">
     <link rel="stylesheet" href="../style/styles.css">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css" rel="stylesheet">
   </head>
   <body>
-    <div class="page-container">
-      <header class="header"><h1 class="site-title">Проекты</h1></header>
-      <nav class="nav">
+    <div class="site-wrap">
+      <header class="header">
+        <div class="logo">[ЛОГОТИП]</div>
+        <div class="site-title">Даниил</div>
+      </header>
+      <nav class="navbar">
         <ul class="nav-list">
-          <li class="nav-item"><a class="nav-link" href="../index.html">Главная</a></li>
-          <li class="nav-item"><a class="nav-link" href="projects.html">Проекты</a></li>
-          <li class="nav-item"><a class="nav-link" href="diary.html">Дневник</a></li>
-          <li class="nav-item"><a class="nav-link" href="goods.html">Товары</a></li>
-          <li class="nav-item"><a class="nav-link nav-link--active" href="news.html">Новости</a></li>
-          <li class="nav-item"><a class="nav-link" href="practices.html">Практики</a></li>
-          <li class="nav-item"><a class="nav-link" href="contacts.html">Контакты</a></li>
+          <li><a class="nav-link" href="../index.html">Главная</a></li>
+          <li><a class="nav-link nav-link--active" href="projects.html">Проекты</a></li>
+          <li><a class="nav-link" href="diary.html">Дневник</a></li>
+          <li><a class="nav-link" href="contacts.html">Контакты</a></li>
         </ul>
       </nav>
-      <main class="content"><h2>Мои проекты</h2>
-        <p class="text-muted">Здесь будет коллекция проектов в виде адаптивной сетки (заглушка).</p>
-        <div class="d-flex gap-2 my-3">
-          <a href="practices.html" class="btn btn-sm btn-outline-primary">Перейти к Практикам</a>
-          <a href="../index.html" class="btn btn-sm btn-outline-secondary">На главную</a>
+
+      <main class="main">
+        <h2>Мои проекты</h2>
+        <div class="grid">
+          <article class="card">
+            <h4>Личный сайт</h4>
+            <p class="muted">HTML, CSS</p>
+          </article>
+          <article class="card">
+            <h4>Todo-приложение</h4>
+            <p class="muted">JavaScript</p>
+          </article>
+          <article class="card">
+            <h4>Интернет-магазин</h4>
+            <p class="muted">React</p>
+          </article>
+          <article class="card">
+            <h4>Портфолио</h4>
+            <p class="muted">Bootstrap</p>
+          </article>
         </div>
       </main>
+
+      <footer class="footer">&copy; 2025 Портфолио</footer>
     </div>
   </body>
 </html>
