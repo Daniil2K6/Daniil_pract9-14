@@ -1,3 +1,35 @@
+/* Unified site styles for the student portfolio project */
+:root{
+  --bg:#f8f9fa;
+  --card:#ffffff;
+  --muted:#6c757d;
+  --brand:#0d6efd;
+  --text:#212529;
+  --accent:#343a40;
+}
+*{box-sizing:border-box}
+html,body{height:100%}
+body{font-family:Inter, 'Helvetica Neue', Arial, sans-serif; margin:0; background:var(--bg); color:var(--text);}
+.site-wrap{max-width:980px;margin:0 auto;padding:18px}
+.header{padding:18px 0;text-align:center}
+.site-title{margin:0;font-weight:600;letter-spacing:.02em}
+.navbar{display:flex;justify-content:center;background:var(--accent);padding:.6rem;border-radius:6px}
+.nav-list{list-style:none;margin:0;padding:0;display:flex;gap:1rem}
+.nav-link{color:#fff;text-decoration:none;padding:.4rem .6rem;border-radius:4px}
+.nav-link--active{background:rgba(255,255,255,.08)}
+.main{background:transparent;padding:18px 0}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px}
+.card{background:var(--card);border:1px solid #e9ecef;padding:12px;border-radius:8px;box-shadow:0 1px 2px rgba(16,24,40,0.03)}
+.card img{max-width:100%;height:160px;object-fit:cover;border-radius:6px}
+.btn{display:inline-block;padding:.45rem .7rem;border-radius:6px;text-decoration:none;color:#fff;background:var(--brand);}
+.btn-outline{background:transparent;border:1px solid var(--brand);color:var(--brand)}
+.muted{color:var(--muted)}
+.footer{text-align:center;padding:14px 0;color:var(--muted);font-size:.95rem;margin-top:18px}
+.skills{display:flex;flex-direction:column;gap:8px}
+.skill{display:flex;align-items:center;gap:8px}
+.skill-bar{height:12px;background:#e9ecef;border-radius:8px;overflow:hidden;flex:1}
+.skill-fill{height:100%;background:var(--accent);display:block}
+@media (max-width:560px){.site-wrap{padding:12px}.nav-list{gap:.5rem}}
 :root {
     --space-xxs: 4px;
     --space-xs: 8px;
